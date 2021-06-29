@@ -1,0 +1,159 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+$fa-font-path: '../node_modules/@fortawesome/fontawesome-free/webfonts';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+@import '../node_modules/@fortawesome/fontawesome-free/scss/regular.scss';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-blue: #051b4a;
+$app-purple: #9762a2;
+$app-primary : (
+    50 : #e1e4e9,
+    100 : #b4bbc9,
+    200 : #828da5,
+    300 : #505f80,
+    400 : #2b3d65,
+    500 : #051b4a,
+    600 : #041843,
+    700 : #04143a,
+    800 : #031032,
+    900 : #010822,
+    A100 : #5e6eff,
+    A200 : #2b3fff,
+    A400 : #0018f7,
+    A700 : #0015de,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+$app-secondary: (
+    50 : #f3ecf4,
+    100 : #e0d0e3,
+    200 : #cbb1d1,
+    300 : #b691be,
+    400 : #a77ab0,
+    500 : #9762a2,
+    600 : #8f5a9a,
+    700 : #845090,
+    800 : #7a4686,
+    900 : #693475,
+    A100 : #f3c3ff,
+    A200 : #e990ff,
+    A400 : #df5dff,
+    A700 : #d943ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$weather-forecast-primary: mat-palette($app-primary);
+$weather-forecast-accent: mat-palette($app-secondary);
+
+// The warn palette is optional (defaults to red).
+$weather-forecast-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$weather-forecast-theme: mat-light-theme($weather-forecast-primary, $weather-forecast-accent, $weather-forecast-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($weather-forecast-theme);
+
+/* You can add global styles to this file, and also import other style files */
+:root {
+    .mat-accent {
+      color: #fff !important;
+    }
+  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: linear-gradient($app-blue, $app-purple);
+  font-family: 'Arial,Roboto, monospace',
+}
+
+:root {
+    --mdc-theme-primary: $app-blue;
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 2rem;
+    --space-4: 4rem;
+  }
+
+  .main-contianer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    right: 0;
+    overflow: auto;
+    left: 0;
+    min-width: 85vh;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 98vh;
+  }
+  
+  .home-header {
+    flex: 0 0 auto;
+  }
+  
+  .home-content {
+    flex: 1 1 auto;
+    flex-basis: 84.5vh;
+    position: relative;
+    /* need this to position inner content */
+    overflow-y: auto;
+  }
+  
+  .home-footer {
+    flex: 0 0 auto;
+  }
+
+  .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #fff;
+    }
